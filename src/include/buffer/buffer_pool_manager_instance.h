@@ -120,6 +120,16 @@ class BufferPoolManagerInstance : public BufferPoolManager {
    * @param page_id
    */
   void ValidatePageId(page_id_t page_id) const;
+  /**
+   * check freelist and lru to get a victim page
+   * @param frame_id 
+   */
+  bool FindVictimPage(frame_id_t *frame_id);
+  /**
+   * write back dirty pages
+   * @param page page
+  */
+  void UpdatePage(Page *page, page_id_t new_page_id, frame_id_t new_frame_id);
 
   /** Number of pages in the buffer pool. */
   const size_t pool_size_;
