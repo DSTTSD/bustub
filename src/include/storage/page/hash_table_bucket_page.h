@@ -132,6 +132,9 @@ class HashTableBucketPage {
    */
   bool IsEmpty();
 
+  MappingType *GetArrayCopy();
+
+  void Reset();
   /**
    * Prints the bucket's occupancy information
    */
@@ -142,7 +145,7 @@ class HashTableBucketPage {
   char occupied_[(BUCKET_ARRAY_SIZE - 1) / 8 + 1];
   // 0 if tombstone/brand new (never occupied), 1 otherwise.
   char readable_[(BUCKET_ARRAY_SIZE - 1) / 8 + 1];
-  MappingType array_[0];
+  MappingType array_[0]; // C++ 11 后可以声明size=0，其实就是个指针（后面page所有空间都是）
 };
 
 }  // namespace bustub

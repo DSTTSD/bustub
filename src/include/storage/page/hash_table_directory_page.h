@@ -186,6 +186,8 @@ class HashTableDirectoryPage {
    */
   void PrintDirectory();
 
+  
+
  private:
   page_id_t page_id_;
   lsn_t lsn_;
